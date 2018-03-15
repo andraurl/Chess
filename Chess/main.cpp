@@ -20,24 +20,16 @@
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
 
+const int tile_size = 80;
+const int border_size = 2;
+
+sf::Color white = sf::Color::White;
+
+
 int main(int, char const**)
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-
-    // Set the Icon
-    sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
-        return EXIT_FAILURE;
-    }
-    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
-        return EXIT_FAILURE;
-    }
-    sf::Sprite sprite(texture);
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Chess");
 
     // Create a graphical text to display
     sf::Font font;
@@ -47,14 +39,7 @@ int main(int, char const**)
     sf::Text text("Hello SFML", font, 50);
     text.setFillColor(sf::Color::Black);
 
-    // Load a music to play
-    sf::Music music;
-    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
-        return EXIT_FAILURE;
-    }
 
-    // Play the music
-    music.play();
 
     // Start the game loop
     while (window.isOpen())
@@ -76,10 +61,21 @@ int main(int, char const**)
 
         // Clear screen
         window.clear();
-
-        // Draw the sprite
-        window.draw(sprite);
-
+        
+        for (int row = 0; row < 8; row++)
+        {
+            for (int col = 0; col < 8; col++)
+            {
+                const int tile_x = col * tile_size, tile_y = row * tile_size;
+                sf::RectangleShape tile;
+                tile.setSize(sf::Vector2f(tile_size - border_size, tile_size - border_size));
+                tile.setFillColor(white);
+                tile.setPosition(tile_x + border_size / 2.0, tile_y + border_size / 2.0);
+                
+                window.draw(tile);
+            }
+        }
+        
         // Draw the string
         window.draw(text);
 
