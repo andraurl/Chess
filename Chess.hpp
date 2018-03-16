@@ -31,6 +31,7 @@ public:
     
     bool is_piece(int row, int col, Color color, Chess_piece type) const;
     bool is_piece_nullptr(int row, int col) const;
+    void piece_on_tile(int row, int col, Color& color, Chess_piece& piece_to_draw) const;
     
     // std::unique_ptr<Piece>& get_pointer(int row, int col) const;
     // std::unique_ptr<Piece> get_start_piece(int row, int col) const;

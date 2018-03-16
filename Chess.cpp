@@ -13,7 +13,7 @@ using namespace std;
 Chess::Chess()
 {
     // PAWNS
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 8; i++)
     {
         board[1][i] = make_unique<Pawn>(Color::White);
         board[6][i] = make_unique<Pawn>(Color::Black);
@@ -65,6 +65,11 @@ Chess::Chess()
     }
      */
     
+}
+
+void Chess::piece_on_tile(int row, int col, Color& color, Chess_piece& piece_to_draw) const{
+    color = board[row][col]->get_color();
+    piece_to_draw = board[row][col]->get_type();
 }
 
 void Chess::list_all_pieces() const

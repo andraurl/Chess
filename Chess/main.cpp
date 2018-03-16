@@ -21,6 +21,7 @@
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
 #include "Chess.hpp"
+#include "sfml_functions.hpp"
 
 const int tile_size = 70;
 const int border_size = 2;
@@ -41,7 +42,7 @@ int main(int, char const**)
     
     
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(640, 640), "Chess");
+    sf::RenderWindow window(sf::VideoMode(560, 560), "Chess");
 
     // Create a graphical text to display
     sf::Font font;
@@ -124,15 +125,106 @@ int main(int, char const**)
         {
             for (int col = 0; col < 8; col++)
             {
-                if (!game->is_piece_nullptr(row, col) && game->is_piece(row, col, Color::Black, Chess_piece::King))
+                if (!game->is_piece_nullptr(row, col))
                 {
-                    cout << "Position: row " << row << ", col " << col << endl;
-                    black_king_image.setPosition(col * tile_size + tile_size / 2.0, (7 - row) * tile_size + tile_size / 2.0);
+                    
+                    Chess_piece piece_to_draw;
+                    Color color;
+                    
+                    game->piece_on_tile(row, col, color, piece_to_draw);
+                    // cout << "Position: row " << row << ", col " << col << endl;
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    cout << "Trying to print a black king" << endl;
+                    
+                    // sf::Sprite piece_picture = get_sprite(Color::Black, Chess_piece::King);
+                    
+                    
+                
+                    sf::Texture texture;
+                    string texture_string;
+                    switch (piece_to_draw) {
+                        case Chess_piece::King:
+                        {
+                            if (color == Color::White) texture_string = "Chess_klt60.png";
+                            else texture_string = "Chess_kdt60.png";
+                            break;
+                        }
+                            
+                        case Chess_piece::Queen:
+                        {
+                            if (color == Color::White) texture_string = "Chess_qlt60.png";
+                            else texture_string = "Chess_qdt60.png";
+                            break;
+                        }
+                            
+                        case Chess_piece::Rook:
+                        {
+                            if (color == Color::White) texture_string = "Chess_rlt60.png";
+                            else texture_string = "Chess_rdt60.png";
+                            break;
+                        }
+                            
+                        case Chess_piece::Bishop:
+                        {
+                            if (color == Color::White) texture_string = "Chess_blt60.png";
+                            else texture_string = "Chess_bdt60.png";
+                            break;
+                        }
+                            
+                        case Chess_piece::Kningt:
+                        {
+                            if (color == Color::White) texture_string = "Chess_nlt60.png";
+                            else texture_string = "Chess_ndt60.png";
+                            break;
+                        }
+                            
+                        case Chess_piece::Pawn:
+                        {
+                            if (color == Color::White) texture_string = "Chess_plt60.png";
+                            else texture_string = "Chess_pdt60.png";
+                            break;
+                        }
+                            
+                        default:
+                            break;
+                    }
+                    
+                    
+                    
+                    if (!texture.loadFromFile(resourcePath() + texture_string)) {cout << "Could not lode file"<< endl;}
+                    
+                    
+                    sf::Sprite piece_picture;
+                    piece_picture.setTexture(texture);
+                    piece_picture.setOrigin(30, 30);
+                    
+
+                    piece_picture.setPosition(col * tile_size + tile_size / 2.0, (7 - row) * tile_size + tile_size / 2.0);
+                    window.draw(piece_picture);
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 }
             }
         }
         
-        window.draw(black_king_image);
+        //window.draw(black_king_image);
 
         // Update the window
         window.display();
