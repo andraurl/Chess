@@ -10,32 +10,31 @@
 #define Chess_hpp
 
 #include <stdio.h>
-#include <vector>
+// #include <vector>
+#include <array>
 #include <assert.h>
+#include <iostream>
 
 #include "Piece.hpp"
-
-
-struct Tile
-{
-    bool is_ocupied;
-    Piece* piece;
-    Tile(bool is_ocupied, Piece* piece)
-    {
-        this->is_ocupied = is_ocupied;
-        this->piece = piece;
-    }
-};
+#include "Tile.hpp"
+#include "Unique_ptr.hpp"
 
 
 class Chess
 {
 private:
-    std::vector<std::vector<Tile>> board;
+    std::array<std::array<std::unique_ptr<Piece>, 8>, 8> board;
 public:
     Chess();
-    bool has_start_piece(int row);
-    Piece get_start_piece(int row, int col);
+    bool has_start_piece(int row) const;
+    void list_all_pieces() const;
+    
+    bool is_piece(int row, int col, Color color, Chess_piece type) const;
+    bool is_piece_nullptr(int row, int col) const;
+    
+    // std::unique_ptr<Piece>& get_pointer(int row, int col) const;
+    // std::unique_ptr<Piece> get_start_piece(int row, int col) const;
+    
     
 };
 

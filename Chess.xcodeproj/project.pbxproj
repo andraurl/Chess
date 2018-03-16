@@ -26,6 +26,8 @@
 		46EEC0D9205AF3870075570C /* Chess_qlt60.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EEC0CD205AF3870075570C /* Chess_qlt60.png */; };
 		46EEC0DA205AF3870075570C /* Chess_rdt60.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EEC0CE205AF3870075570C /* Chess_rdt60.png */; };
 		46EEC0DB205AF3870075570C /* Chess_rlt60.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EEC0CF205AF3870075570C /* Chess_rlt60.png */; };
+		46EEC100205BD99F0075570C /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEC0FE205BD99F0075570C /* Tile.cpp */; };
+		46EEC109205C17A00075570C /* sfml_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEC107205C17A00075570C /* sfml_functions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +39,10 @@
 		46EEC0B2205AD81B0075570C /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
 		46EEC0B4205AD81B0075570C /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		46EEC0B6205AD81B0075570C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		46EEC0BE205ADA2B0075570C /* Chess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chess.cpp; sourceTree = "<group>"; };
-		46EEC0BF205ADA2B0075570C /* Chess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Chess.hpp; sourceTree = "<group>"; };
-		46EEC0C1205AE1850075570C /* Piece.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Piece.cpp; sourceTree = "<group>"; };
-		46EEC0C2205AE1850075570C /* Piece.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Piece.hpp; sourceTree = "<group>"; };
+		46EEC0BE205ADA2B0075570C /* Chess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chess.cpp; sourceTree = SOURCE_ROOT; };
+		46EEC0BF205ADA2B0075570C /* Chess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Chess.hpp; sourceTree = SOURCE_ROOT; };
+		46EEC0C1205AE1850075570C /* Piece.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Piece.cpp; path = ../Piece.cpp; sourceTree = "<group>"; };
+		46EEC0C2205AE1850075570C /* Piece.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Piece.hpp; path = ../Piece.hpp; sourceTree = "<group>"; };
 		46EEC0C4205AF3870075570C /* Chess_bdt60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chess_bdt60.png; sourceTree = "<group>"; };
 		46EEC0C5205AF3870075570C /* Chess_blt60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chess_blt60.png; sourceTree = "<group>"; };
 		46EEC0C6205AF3870075570C /* Chess_kdt60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chess_kdt60.png; sourceTree = "<group>"; };
@@ -53,6 +55,11 @@
 		46EEC0CD205AF3870075570C /* Chess_qlt60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chess_qlt60.png; sourceTree = "<group>"; };
 		46EEC0CE205AF3870075570C /* Chess_rdt60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chess_rdt60.png; sourceTree = "<group>"; };
 		46EEC0CF205AF3870075570C /* Chess_rlt60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chess_rlt60.png; sourceTree = "<group>"; };
+		46EEC0FE205BD99F0075570C /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tile.cpp; path = ../Tile.cpp; sourceTree = "<group>"; };
+		46EEC0FF205BD99F0075570C /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Tile.hpp; path = ../Tile.hpp; sourceTree = "<group>"; };
+		46EEC105205BF6D10075570C /* Unique_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Unique_ptr.hpp; path = ../Unique_ptr.hpp; sourceTree = "<group>"; };
+		46EEC107205C17A00075570C /* sfml_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sfml_functions.cpp; sourceTree = "<group>"; };
+		46EEC108205C17A00075570C /* sfml_functions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sfml_functions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +76,6 @@
 		46EEC09B205AD81B0075570C = {
 			isa = PBXGroup;
 			children = (
-				46EEC0BE205ADA2B0075570C /* Chess.cpp */,
-				46EEC0BF205ADA2B0075570C /* Chess.hpp */,
-				46EEC0C1205AE1850075570C /* Piece.cpp */,
-				46EEC0C2205AE1850075570C /* Piece.hpp */,
 				46EEC0A7205AD81B0075570C /* Chess */,
 				46EEC0A6205AD81B0075570C /* Products */,
 			);
@@ -89,9 +92,18 @@
 		46EEC0A7205AD81B0075570C /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				46EEC105205BF6D10075570C /* Unique_ptr.hpp */,
+				46EEC0FE205BD99F0075570C /* Tile.cpp */,
+				46EEC0FF205BD99F0075570C /* Tile.hpp */,
+				46EEC0BE205ADA2B0075570C /* Chess.cpp */,
+				46EEC0BF205ADA2B0075570C /* Chess.hpp */,
+				46EEC0C1205AE1850075570C /* Piece.cpp */,
+				46EEC0C2205AE1850075570C /* Piece.hpp */,
 				46EEC0AA205AD81B0075570C /* ResourcePath.mm */,
 				46EEC0AC205AD81B0075570C /* ResourcePath.hpp */,
 				46EEC0AD205AD81B0075570C /* main.cpp */,
+				46EEC107205C17A00075570C /* sfml_functions.cpp */,
+				46EEC108205C17A00075570C /* sfml_functions.hpp */,
 				46EEC0AF205AD81B0075570C /* Resources */,
 				46EEC0A8205AD81B0075570C /* Supporting Files */,
 			);
@@ -228,9 +240,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				46EEC0C3205AE1850075570C /* Piece.cpp in Sources */,
+				46EEC109205C17A00075570C /* sfml_functions.cpp in Sources */,
 				46EEC0AE205AD81B0075570C /* main.cpp in Sources */,
 				46EEC0C0205ADA2B0075570C /* Chess.cpp in Sources */,
 				46EEC0AB205AD81B0075570C /* ResourcePath.mm in Sources */,
+				46EEC100205BD99F0075570C /* Tile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,10 +10,17 @@
 #define Piece_hpp
 
 #include <stdio.h>
+#include <string>
+#include <iostream>
 
-enum Chess_piece
+enum class Chess_piece
 {
-    KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN
+    King = 0, Queen, Rook, Bishop, Kningt, Pawn
+};
+
+enum class Color
+{
+    White = 0, Black
 };
 
 
@@ -21,10 +28,13 @@ enum Chess_piece
 class Piece
 {
 private:
-    int color;
+    Color color;
     Chess_piece type;
 public:
-    Piece(int color, Chess_piece type);
+    Piece(Color color, Chess_piece type);
+    Chess_piece get_type() const {return type;}
+    Color get_color() const {return color;}
+    virtual std::string to_string() const = 0;
     // virtual void leagal_move() = 0;
     
 };
@@ -35,8 +45,9 @@ class King : public Piece
 {
 private:
 public:
-    King(int color);
-    void leagal_move();
+    King(Color color);
+    void leagal_move() const;
+    std::string to_string() const;
     
 };
 
@@ -45,8 +56,9 @@ class Queen : public Piece
 {
 private:
 public:
-    Queen(int color);
-    void leagal_move();
+    Queen(Color color);
+    void leagal_move() const;
+    std::string to_string() const;
     
 };
 
@@ -55,8 +67,9 @@ class Rook : public Piece
 {
 private:
 public:
-    Rook(int color);
-    void leagal_move();
+    Rook(Color color);
+    void leagal_move() const;
+    std::string to_string() const;
     
 };
 
@@ -64,8 +77,9 @@ class Bishop : public Piece
 {
 private:
 public:
-    Bishop(int color);
-    void leagal_move();
+    Bishop(Color color);
+    void leagal_move() const;
+    std::string to_string() const;
     
 };
 
@@ -73,8 +87,9 @@ class Knight : public Piece
 {
 private:
 public:
-    Knight(int color);
-    void leagal_move();
+    Knight(Color color);
+    void leagal_move() const;
+    std::string to_string() const;
     
 };
 
@@ -82,8 +97,9 @@ class Pawn : public Piece
 {
 private:
 public:
-    Pawn(int color);
-    void leagal_move();
+    Pawn(Color color);
+    void leagal_move() const;
+    std::string to_string() const;
     
 };
 // */ TA VEKK DENNE FOR Å FÅ TILBAKE

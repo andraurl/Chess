@@ -8,45 +8,54 @@
 
 #include "Piece.hpp"
 
-Piece::Piece(int color, Chess_piece type)
-{
-    this->color = color;
-    this->type = type;
-}
+Piece::Piece(Color color, Chess_piece type) : color(color), type(type) {}
+
 
 // /* TA VEKK DENNE FOR Å FÅ TILBAKE
-King::King(int color) : Piece(color, KING)
-{
-    
+King::King(Color color) : Piece(color, Chess_piece::King) {}
+
+std::string King::to_string() const {
+    if (get_color() == Color::Black) return "Black King";
+    else return "White King";
 }
 
-Queen::Queen(int color) : Piece(color, QUEEN)
-{
-    
-}
+Queen::Queen(Color color) : Piece(color, Chess_piece::Queen) {}
 
-
-Rook::Rook(int color) : Piece(color, ROOK)
-{
-    
-}
-
-
-Bishop::Bishop(int color) : Piece(color, BISHOP)
-{
-    
+std::string Queen::to_string() const {
+    if (get_color() == Color::Black) return "Black Queen";
+    else return "White Queen";
 }
 
 
-Knight::Knight(int color) : Piece(color, KNIGHT)
-{
-    
+Rook::Rook(Color color) : Piece(color, Chess_piece::Rook){}
+
+std::string Rook::to_string() const {
+if (get_color() == Color::Black) return "Black Rook";
+else return "White Rook";
+}
+
+Bishop::Bishop(Color color) : Piece(color, Chess_piece::Bishop){}
+
+std::string Bishop::to_string() const {
+    if (get_color() == Color::Black) return "Black Bishop";
+    else return "White Bishop";
 }
 
 
-Pawn::Pawn(int color) : Piece(color, PAWN)
-{
-    
+Knight::Knight(Color color) : Piece(color, Chess_piece::Kningt){}
+
+std::string Knight::to_string() const {
+    if (get_color() == Color::Black) return "Black Knight";
+    else return "White Knight";
 }
+
+
+Pawn::Pawn(Color color) : Piece(color, Chess_piece::Pawn){}
+
+std::string Pawn::to_string() const {
+    if (get_color() == Color::Black) return "Black Pawn";
+    else return "White Pawn";
+}
+
 // TA VEKK DENNE FOR Å FÅ TILBAKE */
 
