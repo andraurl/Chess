@@ -12,6 +12,12 @@ using namespace std;
 
 Chess::Chess()
 {
+    // reset_maked_tiles();
+    number_of_marked_tiles = 0;
+    players_turn = Color::White;
+    first_marked_piece = nullptr;
+    second_marked_piece = nullptr;
+    
     // PAWNS
     for (int i = 0; i < 8; i++)
     {
@@ -67,6 +73,26 @@ Chess::Chess()
     
 }
 
+bool Chess::try_move_piece() {
+    bool correct_number_of_maked_pieces = (number_of_marked_tiles == 2);
+    assert(correct_number_of_maked_pieces);
+    if (number_of_marked_tiles == 2) {
+        if (is_leagal_move()){
+            cout << "Trying to move piece (" << first_marked_piece->pos_y << ", " << first_marked_piece->pos_x
+                << ") to (" << second_marked_piece->pos_y <<", " <<  second_marked_piece->pos_x << ")" << endl;
+            board[second_marked_piece->pos_y][second_marked_piece->pos_x] = move(board[first_marked_piece->pos_y][first_marked_piece->pos_x]);
+            first_marked_piece = nullptr;
+            second_marked_piece = nullptr;
+            number_of_marked_tiles = 0;
+            return true;
+        }
+        
+    }
+    else return false;
+}
+
+
+
 void Chess::piece_on_tile(int row, int col, Color& color, Chess_piece& piece_to_draw) const{
     color = board[row][col]->get_color();
     piece_to_draw = board[row][col]->get_type();
@@ -83,6 +109,56 @@ void Chess::list_all_pieces() const
                 std::cout << piece->to_string() << std::endl;
             }
         }
+    }
+}
+
+/* void Chess::reset_maked_tiles() {
+    for (auto row : marked_tiles)
+        for (auto value : row) {
+            value = false;
+        }
+*/// }
+
+
+void Chess::set_marked_tile(int row, int col) {
+    bool correct_marked = (number_of_marked_tiles >= 0 || number_of_marked_tiles <= 2);
+    
+    assert(correct_marked);
+    if (!first_marked_piece) {
+        first_marked_piece = move(make_unique<Position>(row, col));
+        number_of_marked_tiles = 1;
+        // cout << "number_of_marked_tiles" << number_of_marked_tiles << "bool: " << correct_marked << endl;
+    }
+    
+    
+    else if (!second_marked_piece) {
+        Position pos2 = Position{row, col};
+        second_marked_piece = move(make_unique<Position>(row, col));
+        number_of_marked_tiles = 2;
+    }
+    else assert(false && "Already marked pieces!");
+    /*
+    if (!marked_tiles[row][col])
+    {
+        marked_tiles[row][col] = true;
+        number_of_marked_tiles++;
+    }
+    else{
+        marked_tiles[row][col] = false;
+        number_of_marked_tiles--;
+    }
+    */
+}
+
+
+void Chess::change_players_turn() {
+    if (players_turn == Color::White){
+        players_turn = Color::Black;
+        cout << "Blacks turn" << endl;
+    }
+    else{
+        players_turn = Color::White;
+        cout << "Whites turn" << endl;
     }
 }
 

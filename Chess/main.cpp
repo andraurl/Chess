@@ -37,7 +37,7 @@ sf::Color red = sf::Color::Red;
 
 int main(int, char const**)
 {
-    
+    // assert(false && "Something wring");
     Chess* game = new Chess();
     
     
@@ -67,14 +67,51 @@ int main(int, char const**)
         while (window.pollEvent(event))
         {
             // Close window: exit
-            if (event.type == sf::Event::Closed) {
-                window.close();
+            switch (event.type) {
+                case sf::Event::Closed:{
+                    window.close();
+                    break;
+                }
+                case sf::Event::KeyPressed:
+                    
+                    switch (event.key.code) {
+                        case sf::Event::Closed:
+                        case sf::Keyboard::Q:
+                            window.close();
+                            break;
+                        case sf::Keyboard::Space:
+                            delete game;
+                            game = new Chess();
+                            break;
+                    }
+                case sf::Event::MouseButtonPressed:
+                    bool outOfRange = (event.mouseButton.y / tile_size < 0 || event.mouseButton.y / tile_size > 7
+                                    || event.mouseButton.x / tile_size < 0 || event.mouseButton.x / tile_size > 7);
+                    if (event.mouseButton.button == sf::Mouse::Left && !game->isGameOver() && !game->isGameWon() && !outOfRange) {
+                        int mouse_y = 7 - (event.mouseButton.y / tile_size);
+                        int mouse_x = event.mouseButton.x / tile_size;
+                        cout << "Mouse pressed at: " << mouse_y << ", " << mouse_x << endl;
+                        game->set_marked_tile(mouse_y, mouse_x);
+                        if(game->get_number_of_marked_tiles() == 2){
+                            if (game->try_move_piece()){
+                                game->change_players_turn();
+                            }
+                        }
+                        //gam
+                    break;
+                    
+                    
             }
+            
+        }
 
             // Escape pressed: exit
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.close();
             }
+            
+            // Mouse pressed
+            
         }
 
         // Clear screen
@@ -135,14 +172,6 @@ int main(int, char const**)
                     // cout << "Position: row " << row << ", col " << col << endl;
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    cout << "Trying to print a black king" << endl;
                     
                     // sf::Sprite piece_picture = get_sprite(Color::Black, Chess_piece::King);
                     
@@ -209,14 +238,6 @@ int main(int, char const**)
 
                     piece_picture.setPosition(col * tile_size + tile_size / 2.0, (7 - row) * tile_size + tile_size / 2.0);
                     window.draw(piece_picture);
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     
                     
                     
